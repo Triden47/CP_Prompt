@@ -44,7 +44,7 @@ const StyledMenu = styled((props) => (
     },
   }));
 
-  const MoreOptions = () => {
+  const MoreOptions = (props) => {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -80,14 +80,14 @@ const StyledMenu = styled((props) => (
                 <BookIcon style={{color: "white"}}/>
                 Bookmark
                 </MenuItem>
-                <MenuItem onClick={handleClose} disableRipple>
+                {!props.secondary && <MenuItem onClick={handleClose} disableRipple>
                 <DoneAllIcon style={{color: "white"}}/>
                 Subscribe website
-                </MenuItem>
-                <MenuItem onClick={handleClose} disableRipple>
+                </MenuItem>}
+                {!props.secondary && <MenuItem onClick={handleClose} disableRipple>
                 <VisibilityOffIcon style={{color: "white"}}/>
                 Hide website
-                </MenuItem>
+                </MenuItem>}
 
             </StyledMenu>
         </>

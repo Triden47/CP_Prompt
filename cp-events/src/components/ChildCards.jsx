@@ -49,7 +49,7 @@ const ChildCards = (props) => {
                                 <div className="item4"><p>Dur: { days ? days + " days" : new Date(child.duration * 1000).toISOString().substr(11, 5) }</p></div>  
                                 <div className="item5"><p>TL: </p></div>
                                 <div className="item6">
-                                    <MoreOptions/>
+                                    <MoreOptions secondary="true"/>
                                 </div>
                             </div>
                         </>
