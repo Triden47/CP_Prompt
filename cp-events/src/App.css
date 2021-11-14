@@ -12,39 +12,44 @@
 
 .item1 { grid-area: header; }
 .item2 { grid-area: image; }
-.item3 { grid-area: startTime; }
-.item4 { grid-area: endTime; }
-.item5 { grid-area: duration; }
-.item6 { grid-area: timeLeft; }
-.item7 { grid-area: more; }
+.item3 { grid-area: startEndTime; }
+/* .item4 { grid-area: endTime; } */
+.item4 { grid-area: duration; }
+.item5 { grid-area: timeLeft; }
+.item6 { grid-area: more; }
 
-.Card {
+.card {
+    background-color: #3F0071;
+    border-radius: 10px/10px;
+    padding: 7px;
+}
+
+.primaryCard {
   display: grid;
   grid-template-areas:
     'image image header header header header header header header'
-    'image image startTime startTime startTime endTime endTime endTime more'
+    'image image startEndTime startEndTime startEndTime startEndTime startEndTime startEndTime more'
     'image image duration duration duration timeLeft timeLeft timeLeft more';
     grid-template-columns: repeat(9, minmax(auto, 1fr));
-  grid-gap: 5px;
-  background-color: #3F0071;
-  padding: 5px;
-  border-radius: 2%/10%;
+    grid-gap: 5px;
+    position: relative;
 }
 
-.Card p {
+.primaryCard p {
     color: rgba(255, 255, 255, 0.813);
     font-size: 0.9rem;
 }
 
 
-.Card > .item1 {
-    font-size: 1.2rem;
-    
+.primaryCard > .item1 {
+    font-size: 1rem;
 }
 
-.Card img {
+.primaryCard > .item2 {
+    text-align: center;
+}
+.primaryCard img {
     width: 75px;
     height: 75px;
     border-radius: 100%;
 }
-
