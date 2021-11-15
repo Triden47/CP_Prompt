@@ -5,9 +5,9 @@ var contest = {info: ""}
 const URL = 'https://clist.by:443/api/v2/contest/'
 const contestData = async(TIME) => {
     try {
-        contest.info = await axios.get(`${URL}/?username=${process.env.API_USER}&api_key=${process.env.API_KEY}&total_count=true&with_problems=false&end__gte=${TIME}`)
+        contest.info = await axios.get(`${URL}/?username=${process.env.API_USER}&limit=1000&api_key=${process.env.API_KEY}&total_count=true&with_problems=false&end__gte=${TIME}`)
 
-        console.log(contest.info.data)
+        // console.log(contest.info.data)
     } catch(error) {
         console.log(error)
     }

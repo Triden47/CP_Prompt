@@ -8,7 +8,7 @@ import ChildCards from './ChildCards';
 
 const Card = (props) => {
     // console.log(props.details[0])
-
+    console.log(props.started)
     const [ dropDown, setDropDown ] = useState(false)
     useEffect(() => {
       if(props.details.length > 1)
@@ -23,7 +23,7 @@ const Card = (props) => {
                 <img src={NoPrev} alt="No Preview"/>
             </div>
             <div className="item3"><p>{ props.started ? "End: " + props.details[0].end : "Start: " + props.details[0].start }</p></div>  
-            {/* <div className="item4"><p>ET: { props.details[0].end }</p></div> */}
+
             <div className="item4"><p>Dur: { days ? days + " days" : new Date(props.details[0].duration * 1000).toISOString().substr(11, 5) }</p></div>  
             <div className="item5"><p>TL: </p></div>
             <div className="item6">

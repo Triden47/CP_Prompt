@@ -7,7 +7,8 @@ const Cards = () => {
     const [ contestArray, setContestArray ] = useState([])
     const [ ongoing, setOngoing ] = useState([])
     const [ upcoming, setUpcoming ] = useState([])
-    const [ current, setCurrent ] = useState([])
+    const [ ongoingList, setOngoingList ] = useState([])
+    const [ upcomingList, setUpcomingList ] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,41 +32,57 @@ const Cards = () => {
             else
                 return 0
         }))
-        setUpcoming(contestArray.filter(contest => contest.start > time))
+        setUpcoming(contestArray.filter(contest => contest.start > time).sort((first, second) => {
+            if(first.start < second.start)
+                return -1
+            else if(first.start > second.start)
+                return 1
+            else
+                return 0
+        }))
 
     }, [contestArray])
 
     useEffect(() => {
-        // Sort is working correctly store value into current now
-        // console.log(ongoing)
+
         var track = []
         for(let i = 0; i < ongoing.length; i++) {
 
             let value = ongoing[i].host
             if(track.find(element => element === value) === undefined) {
                 const newArr = ongoing.filter(contest => contest.host === ongoing[i].host)
-                setCurrent((prev) => [...prev, newArr])
+                setOngoingList((prev) => [...prev, newArr])
                 track.push(value)
             }
         }
     }, [ongoing])
 
-    // useEffect(() => {
-    //     console.log(upcoming)
-    // }, [upcoming])
-    // useEffect(() => {
-    //     console.log(current)
-    // }, [current])
+    useEffect(() => {
+
+        var track = []
+        for(let i = 0; i < upcoming.length; i++) {
+
+            let value = upcoming[i].host
+            if(track.find(element => element === value) === undefined) {
+                const newArr = upcoming.filter(contest => contest.host === upcoming[i].host)
+                setUpcomingList((prev) => [...prev, newArr])
+                track.push(value)
+            }
+        }
+    }, [upcoming])
+
     return (
         <div className="Cards">
             {
-                current.map((contest, index) => {
-                    {/* console.log(contest) */}
-                    return (<Card details={contest} key={index} started="true"/>)
+                ongoingList.map((contest, index) => {
+                    return (<Card details={contest} key={index} started={true}/>)
                 })
             }
-            {/* <Card/> */}
-            {/* <Card/> */}
+            {
+                upcomingList.map((contest, index) => {
+                    return (<Card details={contest} key={index} started={false}/>)
+                })
+            }
         </div>
     )
 }
