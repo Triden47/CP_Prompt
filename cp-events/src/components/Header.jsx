@@ -49,7 +49,7 @@ const Header = () => {
     return (
         <div>
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static" style={{backgroundColor: "#3F0071", marginBottom: "5px", boxShadow: "0 2px 5px black"}}>
+                <AppBar position="static" style={{backgroundColor: "#3F0071", boxShadow: "0 2px 5px black"}}>
                     <Toolbar>
 
                     <Search>

@@ -1,13 +1,13 @@
 
 import './App.css';
 import Header from './components/Header.jsx';
-import Cards from './components/Cards.jsx'
+import Tabs from './components/Tabs.jsx'
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <Cards/>
+      <Tabs/>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import Card from './Card.jsx'
 import { getContestData } from '../api/api.js'
 
 
-const Cards = () => {
+const Cards = (props) => {
     const [ contestArray, setContestArray ] = useState([])
     const [ ongoing, setOngoing ] = useState([])
     const [ upcoming, setUpcoming ] = useState([])
@@ -74,12 +74,12 @@ const Cards = () => {
     return (
         <div className="Cards">
             {
-                ongoingList.map((contest, index) => {
+                props.type === "ongoing" && ongoingList.map((contest, index) => {
                     return (<Card details={contest} key={index} started={true}/>)
                 })
             }
             {
-                upcomingList.map((contest, index) => {
+                props.type === "upcoming" && upcomingList.map((contest, index) => {
                     return (<Card details={contest} key={index} started={false}/>)
                 })
             }
