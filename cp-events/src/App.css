@@ -1,5 +1,6 @@
 .App {
     /* padding: 0 5px; */
+    padding-top: 100px;
 }
 
 .Cards {
@@ -13,10 +14,10 @@
 .item1 { grid-area: header; }
 .item2 { grid-area: image; }
 .item3 { grid-area: startEndTime; }
-/* .item4 { grid-area: endTime; } */
 .item4 { grid-area: duration; }
 .item5 { grid-area: timeLeft; }
-.item6 { grid-area: more; }
+.item6 { grid-area: options; }
+.item7 { grid-area: more; }
 
 .card {
     background-color: #3F0071;
@@ -28,8 +29,8 @@
   display: grid;
   grid-template-areas:
     'image image header header header header header header header'
-    'image image startEndTime startEndTime startEndTime startEndTime startEndTime startEndTime more'
-    'image image duration duration duration timeLeft timeLeft timeLeft more';
+    'image image startEndTime startEndTime startEndTime startEndTime startEndTime options more'
+    'image image duration duration timeLeft timeLeft timeLeft options more';
     grid-template-columns: repeat(9, minmax(auto, 1fr));
     grid-gap: 5px;
     position: relative;
@@ -52,4 +53,8 @@
     width: 75px;
     height: 75px;
     border-radius: 100%;
+}
+
+.primaryCard > .item7 {
+    margin-top: 5px;
 }

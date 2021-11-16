@@ -50,7 +50,7 @@ export default function BasicTabs() {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }} style={{ position: "fixed", top: "50px", zIndex: "5", width: "min(100%, 450px)", borderBottom: "1px solid black" }}>
         <Tabs 
         value={value} 
         onChange={handleChange} variant="fullWidth" 

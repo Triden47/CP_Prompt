@@ -47,9 +47,9 @@ const Search = styled('div')(({ theme }) => ({
 
 const Header = () => {
     return (
-        <div>
+        <div style={{ position: "fixed", top: "0", zIndex: "5", width: "min(100%, 450px)" }}>
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static" style={{backgroundColor: "#3F0071", boxShadow: "0 2px 5px black"}}>
+                <AppBar position="static" style={{backgroundColor: "#3F0071"}}>
                     <Toolbar>
 
                     <Search>

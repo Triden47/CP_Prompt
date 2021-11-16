@@ -14,10 +14,10 @@ const Timer = (props) => {
         let now = moment()
         // let end = moment(moment(props.start_end).format('DD/MM/YYYY hh:mm'), 'DD/MM/YYYY hh:mm')
         let end = moment.utc(moment.utc(props.start_end, 'YYYY-MM-DD hh:mm:ss A').format('DD/MM/YYYY hh:mm A'), 'DD/MM/YYYY hh:mm A')
-        console.log(now)
-        console.log(end)
+        // console.log(now)
+        // console.log(end)
         let d = end.diff(now, 'days')
-        console.log(d)
+        // console.log(d)
         let h  = end.diff(now, 'hours');
         let m  = end.diff(now, 'minutes') - (60 * h);
         let s  = end.diff(now, 'seconds') - (60 * 60 * h) - (60 * m);

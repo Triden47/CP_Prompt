@@ -1,7 +1,5 @@
-import { useState } from 'react'
-import { Collapse, Divider, Badge, Zoom } from '@mui/material';
+import { Collapse, Divider } from '@mui/material';
 import IconButton from '@mui/material/IconButton'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 //components
@@ -10,26 +8,17 @@ import Timer from './Timer';
 
 const ChildCards = (props) => {
 
-    const [open, setOpen] = useState(false)
+    // const [open, setOpen] = useState(true)
+
     const days = Math.floor(props.children.duration / 3600 / 24)
+
+    // useEffect(() => {
+    //     props.handleClick()
+    // }, [open])
 
     return (
         <div>
-            <div style={{ position: "relative", left: "200px" }}>
-            <Zoom
-                in={!open}
-                // timeout="1000ms"
-                >
-                    <IconButton
-                    aria-label="expand row"
-                    size="small"
-                    onClick={() => setOpen(!open)}
-                    >
-                        {!open && <Badge badgeContent={props.children.length} color="secondary"><KeyboardArrowDownIcon style={{ color: "white" }}/></Badge> }
-                    </IconButton>
-                </Zoom>
-            </div>
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            <Collapse in={props.open} timeout="auto">
                 {
                     (props.children).map((child, index) => (
                         <div key={index}>
@@ -40,16 +29,16 @@ const ChildCards = (props) => {
                                 <IconButton
                                     aria-label="expand row"
                                     size="large"
-                                    onClick={() => setOpen(!open)}
+                                    onClick={() => props.handleClick()}
                                     >
-                                        {open && <KeyboardArrowUpIcon style={{ color: "white" }}/>}
+                                        <KeyboardArrowUpIcon style={{ color: "white" }}/>
                                     </IconButton>
                                 </div>
                                 <div className="item3"><p>{ props.started ? "End: " + child.end : "Start: " + child.start }</p></div>  
                                 {/* <div className="item4"><p>ET: { props.details[0].end }</p></div> */}
                                 <div className="item4"><p>Dur: { days ? days + " days" : new Date(child.duration * 1000).toISOString().substr(11, 5) }</p></div>  
                                 <div className="item5">
-                                    <p>TL: <Timer start_end={props.started ? child.end : child.start} /></p>
+                                    <p>Time Left: <Timer start_end={props.started ? child.end : child.start} /></p>
                                 </div>
                                 <div className="item6">
                                     <MoreOptions secondary="true"/>

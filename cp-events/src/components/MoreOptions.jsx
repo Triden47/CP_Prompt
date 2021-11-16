@@ -56,8 +56,7 @@ const StyledMenu = styled((props) => (
     }
     return (
         <>
-            <Fab size="small" style={{backgroundColor: "inherit", boxShadow: "0 0 0",
-            color: "white"}}
+            <Fab size="small" style={{backgroundColor: "inherit", boxShadow: "0 0 0", color: "white"}}
             id="demo-customized-button"
             aria-controls="demo-customized-menu"
             aria-haspopup="true"
