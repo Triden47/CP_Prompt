@@ -30,7 +30,7 @@
   grid-template-areas:
     'image image header header header header header header header'
     'image image startEndTime startEndTime startEndTime startEndTime startEndTime options more'
-    'image image duration duration timeLeft timeLeft timeLeft options more';
+    'image image duration duration duration timeLeft timeLeft options more';
     grid-template-columns: repeat(9, minmax(auto, 1fr));
     grid-gap: 5px;
     position: relative;
