@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
 import moment from 'moment';
-import { StyledEngineProvider } from '@mui/styled-engine';
 
 const Timer = (props) => {
     
-    const [HH, setHH] = useState(null);
-    const [MM, setMM] = useState(null);
-    const [SS, setSS] = useState(null);
-    const [D, setD] = useState(null)
+    const [HH, setHH] = useState("00")
+    const [MM, setMM] = useState("00")
+    const [SS, setSS] = useState("00")
+    const [D, setD] = useState(0)
     
     useEffect(() => {
         
@@ -20,11 +19,11 @@ const Timer = (props) => {
         // console.log(d)
         let h  = end.diff(now, 'hours');
         let m  = end.diff(now, 'minutes') - (60 * h);
-        let s  = end.diff(now, 'seconds') - (60 * 60 * h) - (60 * m);
+        let s  = end.diff(now, 'seconds') - (60 * 60 * h) - (60 * m)
         
-        let hh = ('0' + h).slice(-2);
-        let mm = ('0' + m).slice(-2);
-        let ss = ('0' + s).slice(-2);
+        let hh = ('0' + h).slice(-2)
+        let mm = ('0' + m).slice(-2)
+        let ss = ('0' + s).slice(-2)
         
         setTimeout(() => {
             setD(d)
@@ -32,9 +31,9 @@ const Timer = (props) => {
             setMM(mm)
             setSS(ss)
             
-        }, 1000);
+        }, 1000)
         
-    }, [SS]);
+    }, [SS])
     
     return(
         <>
@@ -44,4 +43,4 @@ const Timer = (props) => {
     
 }
 
-export default Timer;
+export default Timer

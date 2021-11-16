@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import moment from 'moment';
 
 
 //components
@@ -28,7 +29,7 @@ const Card = (props) => {
                     <div className="item2">
                         <img src={NoPrev} alt="No Preview"/>
                     </div>
-                    <div className="item3"><p>{ props.started ? "End: " + props.details[0].end : "Start: " + props.details[0].start }</p></div>  
+                    <div className="item3"><p>{ props.started ? "End: " + moment(props.details[0].end).format('ddd DD-MMM hh:mm a') : "Start: " + moment(props.details[0].start).format('ddd DD-MMM hh:mm a') }</p></div>  
 
                     <div className="item4"><p>Dur: { days ? days + " days" : new Date(props.details[0].duration * 1000).toISOString().substr(11, 5) }</p></div>  
                     <div className="item5">
