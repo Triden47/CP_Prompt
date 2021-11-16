@@ -55,9 +55,10 @@ export default function BasicTabs() {
         value={value} 
         onChange={handleChange} variant="fullWidth" 
         aria-label="basic tabs example"
-        style={{ backgroundColor: "#3F0071" }}
-        textColor="white"
-        indicatorColor="secondary">
+        style={{ backgroundColor: "#3F0071", color: "white" }}
+        indicatorColor="secondary"
+        textColor="inherit"
+        >
           <Tab label="Ongoing" {...a11yProps(0)} />
           <Tab label="Upcoming" {...a11yProps(1)} />
           <Tab label="Saved" {...a11yProps(2)} />

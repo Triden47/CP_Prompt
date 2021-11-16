@@ -6,6 +6,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 //components
 import MoreOptions from "./MoreOptions"
+import Timer from './Timer';
 
 const ChildCards = (props) => {
 
@@ -30,8 +31,8 @@ const ChildCards = (props) => {
             </div>
             <Collapse in={open} timeout="auto" unmountOnExit>
                 {
-                    (props.children).map(child => (
-                        <>
+                    (props.children).map((child, index) => (
+                        <div key={index}>
                             <Divider light style={{ border: "0.1px solid", margin: "10px" }}/>
                             <div className="primaryCard">
                                 <div className="item1">{ child.event }</div>
@@ -47,12 +48,14 @@ const ChildCards = (props) => {
                                 <div className="item3"><p>{ props.started ? "End: " + child.end : "Start: " + child.start }</p></div>  
                                 {/* <div className="item4"><p>ET: { props.details[0].end }</p></div> */}
                                 <div className="item4"><p>Dur: { days ? days + " days" : new Date(child.duration * 1000).toISOString().substr(11, 5) }</p></div>  
-                                <div className="item5"><p>TL: </p></div>
+                                <div className="item5">
+                                    <p>TL: <Timer start_end={props.started ? child.end : child.start} /></p>
+                                </div>
                                 <div className="item6">
                                     <MoreOptions secondary="true"/>
                                 </div>
                             </div>
-                        </>
+                        </div>
                     ))
                 }
             </Collapse>
