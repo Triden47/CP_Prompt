@@ -21,6 +21,10 @@ const Card = (props) => {
 
     const days = Math.floor(props.details[0].duration / 3600 / 24)
 
+    const setDate = ((value) => {
+        return moment.utc(value).local().format('ddd DD-MMM hh:mm a')
+    })
+
     return (
         <>
             <div className="card">
@@ -43,7 +47,8 @@ const Card = (props) => {
                             </Link>
                         </Tooltip>
                     </div>
-                    <div className="item3"><p>{ props.started ? "End: " + moment(props.details[0].end).format('ddd DD-MMM hh:mm a') : "Start: " + moment(props.details[0].start).format('ddd DD-MMM hh:mm a') }</p></div>  
+                    <div className="item3"><p>{ props.started ? "End: " + setDate(props.details[0].end) : "Start: " + setDate(props.details[0].start ) }</p></div>  
+
 
                     <div className="item4">
                         <Tooltip title="Duration" placement="left" arrow>

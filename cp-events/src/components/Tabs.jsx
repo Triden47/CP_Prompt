@@ -50,7 +50,7 @@ export default function BasicTabs() {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }} style={{ position: "fixed", top: "50px", zIndex: "5", width: "min(100%, 450px)", borderBottom: "1px solid black" }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }} style={{ position: "fixed", top: "55px", zIndex: "5", width: "min(100%, 450px)", borderBottom: "1px solid black" }}>
         <Tabs 
         value={value} 
         onChange={handleChange} variant="fullWidth" 
@@ -64,15 +64,20 @@ export default function BasicTabs() {
           <Tab label="Saved" {...a11yProps(2)} />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-        <Cards type="ongoing"/>
+      {/* <TabPanel value={value} index={0}>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Cards type="upcoming"/>
-      </TabPanel>
+      </TabPanel> */}
       {/* <TabPanel value={value} index={2}>
         Saved
       </TabPanel> */}
+
+      <div style={value !== 0 ? { display: "none" } : {}}>
+        <Cards type="ongoing"/>
+      </div>
+      <div style={value !== 1 ? { display: "none" } : {}}>
+        <Cards type="upcoming"/>
+      </div>
     </Box>
   );
 }

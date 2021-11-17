@@ -8,6 +8,10 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import MoreOptions from "./MoreOptions"
 import Timer from './Timer';
 
+const setDate = ((value) => {
+    return moment.utc(value).local().format('ddd DD-MMM hh:mm a')
+})
+
 const ChildCards = (props) => {
 
     return (
@@ -36,7 +40,7 @@ const ChildCards = (props) => {
                                     </IconButton>
                                 </div>
                                 <div className="item3">
-                                    <p>{ props.started ? "End: " + moment(child.end).format('ddd DD-MMM hh:mm a') : "Start: " + moment(child.start).format('ddd DD-MMM hh:mm a') }</p>
+                                    <p>{ props.started ? "End: " + setDate(child.end) : "Start: " + setDate(child.start ) }</p>
                                 </div>  
                                 <div className="item4">
                                     <Tooltip title="Duration" placement="left" arrow>
