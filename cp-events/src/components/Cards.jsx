@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+
+//components
 import Card from './Card.jsx'
 import { getContestData } from '../api/api.js'
+
 
 
 const Cards = (props) => {
@@ -14,7 +17,6 @@ const Cards = (props) => {
         const fetchData = async () => {
 
             const contestData = await getContestData()
-            //   console.log(data.objects)
             setContestArray(Object.keys(contestData.objects).map(key => {
                 return contestData.objects[key]
             }))

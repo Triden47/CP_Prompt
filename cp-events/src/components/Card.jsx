@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import moment from 'moment';
 import { Link, Tooltip } from '@mui/material';
 
@@ -8,11 +8,14 @@ import MoreOptions from './MoreOptions';
 import CollapsableList from './CollapsableList';
 import ChildCards from './ChildCards';
 import Timer from './Timer';
+import { SearchContext } from '../context/SearchProvider';
 
 const Card = (props) => {
 
     const [ dropDown, setDropDown ] = useState(false)
     const [ open, setOpen ] = useState(false)
+    const { search } = useContext(SearchContext)
+
 
     useEffect(() => {
       if(props.details.length > 1)
@@ -27,7 +30,7 @@ const Card = (props) => {
 
     return (
         <>
-            <div className="card">
+            <div className="card" style={ !(props.details[0].host).includes(search) ? {display: "none"} : {}}>
                 <div className="primaryCard">
                     <div className="item1">
                         <Link 

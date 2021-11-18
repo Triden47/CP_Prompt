@@ -1,7 +1,11 @@
-import { styled, alpha } from "@mui/material/styles";
-import { InputBase, Box, AppBar, Toolbar, IconButton } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
-import FilterListIcon from '@mui/icons-material/FilterList';
+import { useCallback, useContext } from 'react'
+import { styled, alpha } from "@mui/material/styles"
+import { InputBase, Box, AppBar, Toolbar, IconButton } from "@mui/material"
+import SearchIcon from '@mui/icons-material/Search'
+import FilterListIcon from '@mui/icons-material/FilterList'
+
+//components
+import { SearchContext } from "../context/SearchProvider";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -16,7 +20,7 @@ const Search = styled('div')(({ theme }) => ({
       marginLeft: theme.spacing(1),
       // width: 'auto',
     },
-  }));
+  }))
   
   const SearchIconWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
@@ -26,7 +30,7 @@ const Search = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-  }));
+  }))
   
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
@@ -43,9 +47,27 @@ const Search = styled('div')(({ theme }) => ({
         // },
       },
     },
-  }));
+  }))
 
 const Header = () => {
+
+    const { search, setSearch } = useContext(SearchContext)
+
+    const debounce = (func, delay) => {
+      let debounceTimer;
+      return function () {
+        const context = this;
+        const args = arguments;
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => func.apply(context, args), delay);
+      };
+    };
+
+    const update = debounce(function (e) {
+      // console.log(e.target.value)
+      setSearch(e.target.value)
+    }, 750);
+
     return (
         <div style={{ position: "fixed", top: "0", zIndex: "5", width: "min(100%, 450px)" }}>
             <Box sx={{ flexGrow: 1 }}>
@@ -59,6 +81,8 @@ const Header = () => {
                         <StyledInputBase
                         placeholder="Search"
                         inputProps={{ 'aria-label': 'search' }}
+                        onChange={(e)=>{ e.persist(); update(e); }}
+                        // value={search}
                         />
                     </Search>
                     <IconButton
