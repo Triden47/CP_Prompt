@@ -9,6 +9,7 @@ import CollapsableList from './CollapsableList';
 import ChildCards from './ChildCards';
 import Timer from './Timer';
 import { SearchContext } from '../context/SearchProvider';
+/* global chrome */
 
 const Card = (props) => {
 
@@ -26,6 +27,24 @@ const Card = (props) => {
 
     const setDate = ((value) => {
         return moment.utc(value).local().format('ddd DD-MMM hh:mm a')
+    })
+
+    const hideCard = ((websiteId) => {
+        chrome.storage.sync.get('hiddenWebsites', function (result) {
+            // the input argument is ALWAYS an object containing the queried keys
+            // so we select the key we need
+            var websites = result.hiddenWebsites;
+            if(typeof websites === 'undefined')
+                websites = []
+            websites.push(websiteId);
+            // set the new array value to the same key
+            chrome.storage.sync.set({hiddenWebsites: websites}, function () {
+                // you can use strings instead of objects
+                // if you don't  want to define default values
+                
+                    console.log(result.hiddenWebsites)
+            });
+        });
     })
 
     return (
@@ -64,7 +83,7 @@ const Card = (props) => {
                         </Tooltip>
                     </div>
                     <div className="item6">
-                        <MoreOptions/>
+                        <MoreOptions website={props.details[0].host} hide={hideCard}/>
                     </div>
                     <div className="item7">
                         { dropDown && <CollapsableList children={ props.details.filter((element, key) => (key !== 0)) } handleClick={() => setOpen(!open)} open={open}/> }

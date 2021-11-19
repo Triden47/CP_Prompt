@@ -51,7 +51,7 @@ const StyledMenu = styled((props) => (
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
+    const handleClose = (props) => {
         setAnchorEl(null)
     }
     return (
@@ -83,9 +83,9 @@ const StyledMenu = styled((props) => (
                 <DoneAllIcon style={{color: "white"}}/>
                 Subscribe website
                 </MenuItem>}
-                {!props.secondary && <MenuItem onClick={handleClose} disableRipple>
+                {!props.secondary && <MenuItem onClick={() => {handleClose(); props.hide(props.website);}} disableRipple>
                 <VisibilityOffIcon style={{color: "white"}}/>
-                Hide website
+                  Hide website
                 </MenuItem>}
 
             </StyledMenu>
