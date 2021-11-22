@@ -11,16 +11,20 @@ import Timer from './Timer';
 import { SearchContext } from '../context/SearchProvider';
 /* global chrome */
 
+const hideStyle = {
+    display: "none"
+}
+
 const Card = (props) => {
 
     const [ dropDown, setDropDown ] = useState(false)
     const [ open, setOpen ] = useState(false)
     const { search } = useContext(SearchContext)
-
+    const [ hidden, setHidden ] = useState(props.hidden)
 
     useEffect(() => {
-      if(props.details.length > 1)
-        setDropDown(true)
+        if(props.details.length > 1)
+            setDropDown(true)    
     }, [])
 
     const days = Math.floor(props.details[0].duration / 3600 / 24)
@@ -45,11 +49,12 @@ const Card = (props) => {
                     console.log(result.hiddenWebsites)
             });
         });
+        setHidden(true)
     })
 
     return (
         <>
-            <div className="card" style={ !(props.details[0].host).includes(search) ? {display: "none"} : {}}>
+            <div className="card" style={ (!(props.details[0].host).includes(search) || hidden) ? hideStyle : {}}>
                 <div className="primaryCard">
                     <div className="item1">
                         <Link 
