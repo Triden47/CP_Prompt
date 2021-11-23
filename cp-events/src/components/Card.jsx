@@ -37,6 +37,14 @@ const Card = (props) => {
         setBw((prev) => [...prev, websiteId])
     })
 
+    const config = ((website) => {
+        const index = website.indexOf('/')
+        if(index === -1)
+            return website
+        else
+            return website.substr(0, index)
+    })
+
     return (
         <>
             <div className="card" style={ (!(props.details[0].host).includes(search) || bw.find(element => element === props.details[0].host) !== undefined) ? hideStyle : {}}>
@@ -57,7 +65,9 @@ const Card = (props) => {
                             href={`https://www.${props.details[0].host}`}
                             target="_blank"
                             >
-                                <img src={NoPrev} alt="No Preview"/>
+                                <img src={'https://logo.clearbit.com/' + config(props.details[0].host)} 
+                                onError={(e)=>{e.target.onerror = null; e.target.src = NoPrev}}
+                                alt="No Preview"/>
                             </Link>
                         </Tooltip>
                     </div>
