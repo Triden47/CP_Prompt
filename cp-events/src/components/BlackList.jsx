@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Drawer, List, Divider } from '@mui/material'
+import { Box, Drawer, Divider } from '@mui/material'
 import { styled, useTheme } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -36,8 +36,6 @@ export default function TemporaryDrawer() {
         <Box
             sx={{ width: "80vw" }}
             role="presentation"
-            // onClick={toggleDrawer(anchor, false)}
-            // onKeyDown={toggleDrawer(anchor, false)}
         >
             <DrawerHeader>
                 <div style={{ position: "relative", top: "5px" }}>

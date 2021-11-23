@@ -12,8 +12,8 @@ function App() {
   return (
     <div className="App">
       <SearchProvider>
-        <Header/>
         <BwProvider>
+          <Header/>
           <Tabs/>
         </BwProvider>
       </SearchProvider>

@@ -8,8 +8,8 @@ import MoreOptions from './MoreOptions';
 import CollapsableList from './CollapsableList';
 import ChildCards from './ChildCards';
 import Timer from './Timer';
-import { SearchContext } from '../context/SearchProvider';
-/* global chrome */
+import { SearchContext } from '../context/SearchProvider.jsx';
+import { BwContext } from '../context/BwProvider.jsx'
 
 const hideStyle = {
     display: "none"
@@ -20,7 +20,7 @@ const Card = (props) => {
     const [ dropDown, setDropDown ] = useState(false)
     const [ open, setOpen ] = useState(false)
     const { search } = useContext(SearchContext)
-    const [ hidden, setHidden ] = useState(props.hidden)
+    const { bw, setBw } = useContext(BwContext)
 
     useEffect(() => {
         if(props.details.length > 1)
@@ -34,33 +34,19 @@ const Card = (props) => {
     })
 
     const hideCard = ((websiteId) => {
-        chrome.storage.sync.get('hiddenWebsites', function (result) {
-            // the input argument is ALWAYS an object containing the queried keys
-            // so we select the key we need
-            var websites = result.hiddenWebsites;
-            if(typeof websites === 'undefined')
-                websites = []
-            websites.push(websiteId);
-            // set the new array value to the same key
-            chrome.storage.sync.set({hiddenWebsites: websites}, function () {
-                // you can use strings instead of objects
-                // if you don't  want to define default values
-                
-                    console.log(result.hiddenWebsites)
-            });
-        });
-        setHidden(true)
+        setBw((prev) => [...prev, websiteId])
     })
 
     return (
         <>
-            <div className="card" style={ (!(props.details[0].host).includes(search) || hidden) ? hideStyle : {}}>
+            <div className="card" style={ (!(props.details[0].host).includes(search) || bw.find(element => element === props.details[0].host) !== undefined) ? hideStyle : {}}>
                 <div className="primaryCard">
                     <div className="item1">
                         <Link 
                         color="inherit" 
                         underline="hover"
                         href={props.details[0].href}
+                        target="_blank"
                         >
                             { props.details[0].event }
                         </Link>
@@ -69,6 +55,7 @@ const Card = (props) => {
                         <Tooltip title={props.details[0].host} arrow>
                             <Link
                             href={`https://www.${props.details[0].host}`}
+                            target="_blank"
                             >
                                 <img src={NoPrev} alt="No Preview"/>
                             </Link>

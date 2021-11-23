@@ -3,7 +3,6 @@ import { styled, alpha } from "@mui/material/styles";
 import { InputBase, Box, AppBar, Toolbar } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-
 //components
 import { SearchContext } from "../context/SearchProvider";
 import BlackList from "./BlackList.jsx";

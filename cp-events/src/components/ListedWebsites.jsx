@@ -1,43 +1,18 @@
-import * as React from "react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Checkbox from "@mui/material/Checkbox";
-import IconButton from "@mui/material/IconButton";
-import CommentIcon from "@mui/icons-material/Comment";
+import { useState, useContext } from "react";
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Checkbox } from "@mui/material";
 
-/*global chrome */
+//components
+import { BwContext } from "../context/BwProvider.jsx";
+
 
 const CheckboxList = () => {
-    const [checked, setChecked] = React.useState([0]);
-    const [ blacklist, setBlacklist ] = React.useState([])
-    const [ unchecked, setUnchecked ] = React.useState([])
+    const [checked, setChecked] = useState([0]);
+    const { bw, setBw } = useContext(BwContext)
 
-    React.useEffect(() => {
-        const hiddenList = ((websiteId) => {
-            chrome.storage.sync.get('hiddenWebsites', function (result) {
-                var arr = result.hiddenWebsites;
-                if(typeof arr === 'undefined')
-                    setBlacklist([])
-                else
-                    setBlacklist(arr)
-                console.log(blacklist)
-            });
-        })
-        hiddenList()
-    }, [])
 
     const handleToggle = (value) => () => {
-        // console.log(value)
-        if(unchecked.find(element => element === value) !== undefined) {
-          setUnchecked(unchecked.filter(element => element !== value))
-        } else {
-          setUnchecked((prevArr) => [...prevArr, value])
-        }
 
-        // console.log(unchecked)
+        setBw(bw.filter(element => element !== value))
 
         const currentIndex = checked.indexOf(value);
         const newChecked = [...checked];
@@ -55,9 +30,8 @@ const CheckboxList = () => {
         <List
             sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
         >
-            {blacklist.map((value, key) => {
+            {bw.map((value, key) => {
                 const labelId = `checkbox-list-label-${value}`;
-                {/* console.log(value) */}
 
                 return (
                     <ListItem key={value} disablePadding>

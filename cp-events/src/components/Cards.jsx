@@ -3,9 +3,6 @@ import { useState, useEffect } from 'react'
 //components
 import Card from './Card.jsx'
 import { getContestData } from '../api/api.js'
-/*global chrome*/
-
-let blacklist = []
 
 const Cards = (props) => {
     const [ contestArray, setContestArray ] = useState([])
@@ -24,15 +21,6 @@ const Cards = (props) => {
             }))
         }
         fetchData()
-
-        const hiddenList = ((websiteId) => {
-            chrome.storage.sync.get('hiddenWebsites', function (result) {
-                blacklist = result.hiddenWebsites;
-                if(typeof blacklist === 'undefined')
-                    blacklist = []
-            });
-        })
-        hiddenList()
     }, [])
 
     useEffect(() => {
@@ -84,26 +72,16 @@ const Cards = (props) => {
         }
     }, [upcoming])
 
-    const checkBlacklist = ((contestHost) => {
-        // console.log(contestHost)
-        const found = blacklist.find(element => element === contestHost)
-        console.log(found)
-        if(found === undefined)
-            return false
-        return true
-
-    })
-
     return (
         <div className="Cards">
             {
                 props.type === "ongoing" && ongoingList.map((contest, index) => {
-                    return (<Card details={contest} key={index} started={true} hidden={checkBlacklist(contest[0].host)}/>)
+                    return (<Card details={contest} key={index} started={true}/>)
                 })
             }
             {
                 props.type === "upcoming" && upcomingList.map((contest, index) => {
-                    return (<Card details={contest} key={index} started={false} hidden={checkBlacklist(contest[0].host)}/>)
+                    return (<Card details={contest} key={index} started={false}/>)
                 })
             }
         </div>

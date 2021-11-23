@@ -26,7 +26,8 @@ const ChildCards = (props) => {
                                     <Link 
                                     color="inherit" 
                                     underline="hover"
-                                    href={child.href}>
+                                    href={child.href}
+                                    target="_blank">
                                         { child.event }
                                     </Link>
                                 </div>
