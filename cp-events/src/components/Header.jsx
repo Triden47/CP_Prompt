@@ -65,7 +65,7 @@ const Header = () => {
     const update = debounce(function (e) {
         // console.log(e.target.value)
         setSearch(e.target.value);
-    }, 750);
+    }, 500);
 
     return (
         <div

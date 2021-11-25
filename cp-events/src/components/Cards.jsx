@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 //components
 import Card from './Card.jsx'
-import { getContestData } from '../api/api.js'
+import SavedCard from './SavedCard.jsx'
 
 const Cards = (props) => {
     const [ contestArray, setContestArray ] = useState([])
@@ -11,19 +11,16 @@ const Cards = (props) => {
     const [ ongoingList, setOngoingList ] = useState([])
     const [ upcomingList, setUpcomingList ] = useState([])
 
+    useEffect(() => {
+        // const fetchData = () => {
+            // console.log(1)
+            setContestArray(props.contests)
+        // }
+        // fetchData()
+    }, [props.contests])
 
     useEffect(() => {
-        const fetchData = async () => {
-
-            const contestData = await getContestData()
-            setContestArray(Object.keys(contestData.objects).map(key => {
-                return contestData.objects[key]
-            }))
-        }
-        fetchData()
-    }, [])
-
-    useEffect(() => {
+        // console.log(contestArray)
         const time = new Date(new Date().getTime()).toISOString()
         setOngoing(contestArray.filter(contest => contest.start <= time).sort((first, second) => {
             if(first.end < second.end)
@@ -82,6 +79,11 @@ const Cards = (props) => {
             {
                 props.type === "upcoming" && upcomingList.map((contest, index) => {
                     return (<Card details={contest} key={index} started={false}/>)
+                })
+            }
+            {
+                props.type === "saved" && upcoming.map((contest, index) => {
+                    return (<SavedCard details={contest} key={index}/>)
                 })
             }
         </div>

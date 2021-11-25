@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { styled } from '@mui/material/styles'
-import { Fab, Menu, MenuItem } from '@mui/material'
+import { Fab, Menu, MenuItem, IconButton } from '@mui/material'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import BookIcon from '@mui/icons-material/Book';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
@@ -56,7 +56,7 @@ const StyledMenu = styled((props) => (
     }
     return (
         <>
-            <Fab size="small" style={{backgroundColor: "inherit", boxShadow: "0 0 0", color: "white"}}
+            {/* <Fab size="small" style={{backgroundColor: "inherit", boxShadow: "0 0 0", color: "white"}}
             id="demo-customized-button"
             aria-controls="demo-customized-menu"
             aria-haspopup="true"
@@ -74,21 +74,32 @@ const StyledMenu = styled((props) => (
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
-            >
-                <MenuItem onClick={handleClose} disableRipple>
+            > */}
+                {/* <MenuItem onClick={handleClose} disableRipple>
                 <BookIcon style={{color: "white"}}/>
                 Bookmark
-                </MenuItem>
-                {!props.secondary && <MenuItem onClick={handleClose} disableRipple>
+                </MenuItem> */}
+                {/* {!props.secondary && <MenuItem onClick={handleClose} disableRipple>
                 <DoneAllIcon style={{color: "white"}}/>
-                Subscribe website
+                Follow website
                 </MenuItem>}
                 {!props.secondary && <MenuItem onClick={() => {handleClose(); props.hide(props.website);}} disableRipple>
                 <VisibilityOffIcon style={{color: "white"}}/>
                   Hide website
                 </MenuItem>}
 
-            </StyledMenu>
+            </StyledMenu> */}
+            <IconButton 
+            style={{color: "rgba(255, 255, 255, 0.7)"}}
+            onClick={() => {props.hide(props.website);}}
+            // onClick={handleClick}
+            >
+                    <VisibilityOffIcon />
+                    {/* savedEvent.find(element => element.host === props.host && element.event === props.event) === undefined ? 
+                    <BookmarkAddOutlinedIcon style={{color: "white"}}/> :
+                    <BookmarkAddedIcon style={{color: "white"}}/> */}
+
+            </IconButton>
         </>
     )
 }

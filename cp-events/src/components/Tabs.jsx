@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 
 //components
 import Cards from './Cards';
+import { getContestData } from '../api/api.js'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -41,8 +42,23 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs() {
+
+
+const BasicTabs = () => {
   const [value, setValue] = useState(0);
+
+  const [ contestArray, setContestArray ] = useState([])
+
+  useEffect(() => {
+      const fetchData = async () => {
+
+          const contestData = await getContestData()
+          setContestArray(Object.keys(contestData.objects).map(key => {
+              return contestData.objects[key]
+          }))
+      }
+      fetchData()
+  }, [])
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -64,20 +80,18 @@ export default function BasicTabs() {
           <Tab label="Saved" {...a11yProps(2)} />
         </Tabs>
       </Box>
-      {/* <TabPanel value={value} index={0}>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-      </TabPanel> */}
-      {/* <TabPanel value={value} index={2}>
-        Saved
-      </TabPanel> */}
 
       <div style={value !== 0 ? { display: "none" } : {}}>
-        <Cards type="ongoing"/>
+        <Cards contests={contestArray} type="ongoing"/>
       </div>
       <div style={value !== 1 ? { display: "none" } : {}}>
-        <Cards type="upcoming"/>
+        <Cards contests={contestArray} type="upcoming"/>
+      </div>
+      <div style={value !== 2 ? { display: "none" } : {}}>
+        <Cards contests={contestArray} type="saved"/>
       </div>
     </Box>
   );
 }
+
+export default BasicTabs

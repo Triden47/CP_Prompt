@@ -1,10 +1,14 @@
 import { useState, useEffect, createContext } from 'react'
 
-export const BwContext = createContext(null)
-/*global chrome*/
+export const SaveContext = createContext(null)
 
-const BwProvider = ({ children }) => {
-    const [ bw, setBw ] = useState([])
+const SaveProvider = ({ children }) => {
+    const [ savedHost, setSavedHost ] = useState([])
+    const [ savedEvent, setSavedEvent ] = useState([])
+
+    useEffect(() => {
+        console.log(savedEvent)
+    }, [savedEvent])
 
     // useEffect(() => {
     //     const hiddenList = (() => {
@@ -29,13 +33,13 @@ const BwProvider = ({ children }) => {
     // }, [bw])
     
     return (
-        <BwContext.Provider value={{
-            bw,
-            setBw
+        <SaveContext.Provider value={{
+            savedEvent,
+            setSavedEvent
         }}>
             {children}
-        </BwContext.Provider>
+        </SaveContext.Provider>
     )
 }
 
-export default BwProvider
+export default SaveProvider

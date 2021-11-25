@@ -12,13 +12,14 @@ const CollapsableList = ((props) => {
                     <IconButton
                     aria-label="expand row"
                     size="small"
+                    style={{ position: "relative", top: "3px" }}
                     onClick={() => props.handleClick()}
                     >
                         <Badge badgeContent={props.children.length} color="secondary"><KeyboardArrowDownIcon style={{ color: "white" }}/></Badge>
                     </IconButton>
                 </Zoom> : 
                 <IconButton
-                    aria-label="collaps row"
+                    aria-label="collapse row"
                     size="small"
                     onClick={() => props.handleClick()}
                     >

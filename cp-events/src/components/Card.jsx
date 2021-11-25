@@ -10,6 +10,7 @@ import ChildCards from './ChildCards';
 import Timer from './Timer';
 import { SearchContext } from '../context/SearchProvider.jsx';
 import { BwContext } from '../context/BwProvider.jsx'
+import Save from './Save';
 
 const hideStyle = {
     display: "none"
@@ -84,10 +85,16 @@ const Card = (props) => {
                             <p>TL: <Timer start_end={props.started ? props.details[0].end : props.details[0].start} /></p>
                         </Tooltip>
                     </div>
-                    <div className="item6">
+                    <div className="item7">
                         <MoreOptions website={props.details[0].host} hide={hideCard}/>
                     </div>
-                    <div className="item7">
+                    {
+                        !props.started && 
+                        <div className="item6">
+                            <Save host={props.details[0].host} event={props.details[0].event} />
+                        </div>
+                    }
+                    <div className="item8">
                         { dropDown && <CollapsableList children={ props.details.filter((element, key) => (key !== 0)) } handleClick={() => setOpen(!open)} open={open}/> }
                     </div>
                 </div>

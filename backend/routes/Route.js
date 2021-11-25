@@ -8,6 +8,7 @@ const route = express.Router()
 
 route.get('/contest', async(req, res) => {
     try {
+
         // console.log(contest.info.data)
         res.status(200).json(contest.info.data)
     } catch(error) {

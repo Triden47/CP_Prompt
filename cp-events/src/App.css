@@ -17,27 +17,30 @@
 .item4 { grid-area: duration; }
 .item5 { grid-area: timeLeft; }
 .item6 { grid-area: options; }
-.item7 { grid-area: more; }
+.item7 { grid-area: save; }
+.item8 { grid-area: more; }
 
 .card {
     background-color: #3F0071;
     border-radius: 10px/10px;
-    padding: 7px;
+    padding: 5px 5px 5px 0;
+    /* padding-left: 0px; */
 }
 
 .primaryCard {
   display: grid;
   grid-template-areas:
     'image image header header header header header header header'
-    'image image startEndTime startEndTime startEndTime startEndTime startEndTime options more'
-    'image image duration duration duration timeLeft timeLeft options more';
+    'image image startEndTime startEndTime startEndTime startEndTime options save more'
+    'image image duration duration timeLeft timeLeft options save more';
     grid-template-columns: repeat(9, minmax(auto, 1fr));
     grid-gap: 5px;
+    /* column-gap: 5px; */
     position: relative;
 }
 
 .primaryCard p {
-    color: rgba(255, 255, 255, 0.813);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 0.9rem;
 }
 
@@ -55,6 +58,6 @@
     border-radius: 100%;
 }
 
-.primaryCard > .item7 {
+/* .primaryCard > .item7 {
     margin-top: 5px;
-}
+} */

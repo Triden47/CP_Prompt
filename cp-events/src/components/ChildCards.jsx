@@ -7,6 +7,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 //components
 import MoreOptions from "./MoreOptions"
 import Timer from './Timer';
+import Save from './Save.jsx'
 
 const setDate = ((value) => {
     return moment.utc(value).local().format('ddd DD-MMM hh:mm a')
@@ -20,7 +21,7 @@ const ChildCards = (props) => {
                 {
                     (props.children).map((child, index) => (
                         <div key={index}>
-                            <Divider light style={{ border: "0.1px solid", margin: "10px" }}/>
+                            <Divider style={{ border: "0.1px solid", margin: "10px", color: 'rgba(255, 255, 255, 0.6)' }}/>
                             <div className="primaryCard">
                                 <div className="item1">
                                     <Link 
@@ -53,9 +54,15 @@ const ChildCards = (props) => {
                                         <p>TL: <Timer start_end={props.started ? child.end : child.start} /></p>
                                     </Tooltip>
                                 </div>
-                                <div className="item6">
+                                {/* <div className="item6">
                                     <MoreOptions secondary="true"/>
+                                </div> */}
+                                <div className="item7">
+                                    <Save host={child.host} event={child.event} />
                                 </div>
+                                {/* <div className="item6">
+                                    <MoreOptions secondary="true"/>
+                                </div> */}
                             </div>
                         </div>
                     ))
