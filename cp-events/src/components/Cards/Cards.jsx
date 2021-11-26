@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 
 //components
-import Card from './Card.jsx'
-import SavedCard from './SavedCard.jsx'
+import Card from './Upcoming_OngoingCard/Card.jsx'
+import SavedCard from './SavedCard/SavedCard.jsx'
 
 const Cards = (props) => {
     const [ contestArray, setContestArray ] = useState([])

@@ -1,8 +1,8 @@
-import { useState, useContext } from "react";
-import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Checkbox } from "@mui/material";
+import { useState, useContext } from 'react'
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Checkbox } from '@mui/material'
 
 //components
-import { BwContext } from "../context/BwProvider.jsx";
+import { BwContext } from '../../context/BwProvider'
 
 
 const CheckboxList = () => {

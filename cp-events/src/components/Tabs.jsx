@@ -1,16 +1,17 @@
-import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import { useState, useEffect, useContext } from 'react'
+import PropTypes from 'prop-types'
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
 
 //components
-import Cards from './Cards';
+import Cards from './Cards/Cards'
 import { getContestData } from '../api/api.js'
+import { SaveContext } from '../context/SaveProvider'
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
 
   return (
     <div
@@ -46,8 +47,8 @@ function a11yProps(index) {
 
 const BasicTabs = () => {
   const [value, setValue] = useState(0);
-
   const [ contestArray, setContestArray ] = useState([])
+  const { savedEvent, setSavedEvent } = useContext(SaveContext)
 
   useEffect(() => {
       const fetchData = async () => {
@@ -59,6 +60,16 @@ const BasicTabs = () => {
       }
       fetchData()
   }, [])
+
+  useEffect(() => {
+    setSavedEvent(savedEvent.filter(element => {
+      return (
+        contestArray.find(contests => {
+          return (contests.host === element.host && contests.event === element.event)
+        }) !== undefined
+      )
+    }))
+  }, [contestArray])
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

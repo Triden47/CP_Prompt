@@ -1,16 +1,16 @@
 import { useState, useEffect, useContext } from 'react'
 import moment from 'moment';
-import { Link, Tooltip } from '@mui/material';
+import { Link, Tooltip } from '@mui/material'
 
 //components
-import NoPrev from '../images/NoPreview.png'
-import MoreOptions from './MoreOptions';
-import CollapsableList from './CollapsableList';
-import ChildCards from './ChildCards';
-import Timer from './Timer';
-import { SearchContext } from '../context/SearchProvider.jsx';
-import { BwContext } from '../context/BwProvider.jsx'
-import Save from './Save';
+import NoPrev from '../../../images/NoPreview.png'
+import MoreOptions from '../MoreOptions'
+import CollapsableList from './CollapsableList'
+import ChildCards from './ChildCards'
+import Timer from '../Timer';
+import { SearchContext } from '../../../context/SearchProvider'
+import { BwContext } from '../../../context/BwProvider'
+import Save from '../Save'
 
 const hideStyle = {
     display: "none"

@@ -5,7 +5,7 @@ import BookmarkAddOutlinedIcon from '@mui/icons-material/BookmarkAddOutlined';
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 
 //components
-import { SaveContext } from '../context/SaveProvider.jsx'
+import { SaveContext } from '../../context/SaveProvider'
 
 const Save = (props) => {
 

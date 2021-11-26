@@ -37,7 +37,7 @@ const Timer = (props) => {
     
     return(
         <>
-            { D > 0 ? `${D} days` : `${HH}:${MM}:${SS}`}
+            { D > 0 ? `${D} days` : `${HH}:${MM}:${SS}` }
         </>
     );
     

@@ -1,13 +1,12 @@
-import { Collapse, Divider } from '@mui/material';
+import { Collapse, Divider, Link, Tooltip } from '@mui/material'
 import moment from 'moment';
-import { Link, Tooltip } from '@mui/material';
 import IconButton from '@mui/material/IconButton'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 //components
-import MoreOptions from "./MoreOptions"
-import Timer from './Timer';
-import Save from './Save.jsx'
+// import MoreOptions from "./MoreOptions"
+import Timer from '../Timer'
+import Save from '../Save'
 
 const setDate = ((value) => {
     return moment.utc(value).local().format('ddd DD-MMM hh:mm a')

@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState } from 'react'
 import { Box, Drawer, Divider } from '@mui/material'
-import { styled, useTheme } from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import FilterListIcon from "@mui/icons-material/FilterList";
+import { styled, useTheme } from '@mui/material/styles'
+import IconButton from '@mui/material/IconButton'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import FilterListIcon from '@mui/icons-material/FilterList'
 
 //components
-import ListedWebsites from './ListedWebsites.jsx'
+import ListedWebsites from './ListedWebsites'
 
 const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
@@ -32,7 +32,7 @@ export default function TemporaryDrawer() {
         setState(open);
     };
 
-    const list = (anchor) => (
+    const list = () => (
         <Box
             sx={{ width: "80vw" }}
             role="presentation"
@@ -60,7 +60,6 @@ export default function TemporaryDrawer() {
             </DrawerHeader>
             <Divider />
             <ListedWebsites/>
-            <Divider />
         </Box>
     );
 
@@ -81,6 +80,7 @@ export default function TemporaryDrawer() {
                 anchor={"left"}
                 open={state}
                 onClose={toggleDrawer(false)}
+                // color="inherit"
             >
                 {list("right")}
                 {/* <h1 onClick={() => {props.close(false)}}>Close</h1> */}

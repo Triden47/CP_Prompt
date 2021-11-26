@@ -1,14 +1,14 @@
-import { useState, useEffect, useContext } from 'react'
-import moment from 'moment';
-import { Link, Tooltip } from '@mui/material';
+import { useContext } from 'react'
+import moment from 'moment'
+import { Link, Tooltip } from '@mui/material'
 
 //components
-import NoPrev from '../images/NoPreview.png'
-import MoreOptions from './MoreOptions';
-import Timer from './Timer';
-import { SearchContext } from '../context/SearchProvider.jsx';
-import { SaveContext } from '../context/SaveProvider.jsx'
-import Save from './Save';
+import NoPrev from '../../../images/NoPreview.png'
+// import MoreOptions from './MoreOptions';
+import Timer from '../Timer';
+import { SearchContext } from '../../../context/SearchProvider'
+import { SaveContext } from '../../../context/SaveProvider'
+import Save from '../Save'
 
 const hideStyle = {
     display: "none"

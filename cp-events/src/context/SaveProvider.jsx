@@ -1,36 +1,35 @@
 import { useState, useEffect, createContext } from 'react'
+/*global chrome*/
 
 export const SaveContext = createContext(null)
 
 const SaveProvider = ({ children }) => {
-    const [ savedHost, setSavedHost ] = useState([])
+    // const [ savedHost, setSavedHost ] = useState([])
     const [ savedEvent, setSavedEvent ] = useState([])
 
+    // useEffect(() => {
+    //     console.log(savedEvent)
+    // }, [savedEvent])
+
     useEffect(() => {
-        console.log(savedEvent)
+        const savedList = (() => {
+            chrome.storage.sync.get('savedEvents', function (result) {
+                var arr = result.savedEvents;
+                if(typeof arr === undefined)
+                    setSavedEvent([])
+                else
+                    setSavedEvent(arr)
+            });
+        })
+        savedList()
+    }, [])
+
+    useEffect(() => {
+        const savedList = (() => {chrome.storage.sync.set({ savedEvents: savedEvent })}) 
+        savedList()
+        
+        chrome.browserAction.setBadgeText({text: (savedEvent.length).toString()}); 
     }, [savedEvent])
-
-    // useEffect(() => {
-    //     const hiddenList = (() => {
-    //         chrome.storage.sync.get('hiddenWebsites', function (result) {
-    //             var arr = result.hiddenWebsites;
-    //             if(typeof arr === undefined)
-    //                 setBw([])
-    //             else
-    //                 setBw(arr)
-    //         });
-    //     })
-    //     hiddenList()
-    // }, [])
-
-    // useEffect(() => {
-    //     const hiddenList = (() => {
-    //         chrome.storage.sync.set({hiddenWebsites: bw}, function () {
-    //                 // console.log(bw)
-    //         });
-    //     })
-    //     hiddenList()
-    // }, [bw])
     
     return (
         <SaveContext.Provider value={{
