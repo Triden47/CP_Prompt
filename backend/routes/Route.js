@@ -4,12 +4,9 @@ import express from 'express'
 import contest from '../api/api.js'
 
 const route = express.Router()
-// console.log(contest.info.data)
 
 route.get('/contest', async(req, res) => {
     try {
-
-        // console.log(contest.info.data)
         res.status(200).json(contest.info.data)
     } catch(error) {
         res.status(500).json(error)
