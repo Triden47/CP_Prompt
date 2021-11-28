@@ -1,40 +1,44 @@
-import { useState, useEffect, createContext } from 'react'
+import { useState, useEffect, createContext } from "react";
 /*global chrome*/
 
-export const SaveContext = createContext(null)
+export const SaveContext = createContext(null);
 
 const SaveProvider = ({ children }) => {
     // const [ savedHost, setSavedHost ] = useState([])
-    const [ savedEvent, setSavedEvent ] = useState([])
+    const [savedEvent, setSavedEvent] = useState([]);
 
     useEffect(() => {
-        const savedList = (() => {
-            chrome.storage.sync.get('savedEvents', function (result) {
+        const savedList = () => {
+            chrome.storage.sync.get("savedEvents", function (result) {
                 var arr = result.savedEvents;
-                if(typeof arr === undefined)
-                    setSavedEvent([])
-                else
-                    setSavedEvent(arr)
+                if (typeof arr === undefined) setSavedEvent([]);
+                else setSavedEvent(arr);
             });
-        })
-        savedList()
-    }, [])
+        };
+        savedList();
+    }, []);
 
     useEffect(() => {
-        const savedList = (() => {chrome.storage.sync.set({ savedEvents: savedEvent })}) 
-        savedList()
-        
-        chrome.browserAction.setBadgeText({text: (savedEvent.length).toString()}); 
-    }, [savedEvent])
-    
+        const savedList = () => {
+            chrome.storage.sync.set({ savedEvents: savedEvent });
+        };
+        savedList();
+
+        chrome.browserAction.setBadgeText({
+            text: savedEvent.length.toString(),
+        });
+    }, [savedEvent]);
+
     return (
-        <SaveContext.Provider value={{
-            savedEvent,
-            setSavedEvent
-        }}>
+        <SaveContext.Provider
+            value={{
+                savedEvent,
+                setSavedEvent,
+            }}
+        >
             {children}
         </SaveContext.Provider>
-    )
-}
+    );
+};
 
-export default SaveProvider
+export default SaveProvider;

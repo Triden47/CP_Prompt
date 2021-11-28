@@ -1,11 +1,11 @@
-import { useContext } from "react"
-import { styled, alpha } from "@mui/material/styles"
-import { InputBase, Box, AppBar, Toolbar } from "@mui/material"
-import SearchIcon from "@mui/icons-material/Search"
+import { useContext } from "react";
+import { styled, alpha } from "@mui/material/styles";
+import { InputBase, Box, AppBar, Toolbar } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 //components
-import { SearchContext } from "../context/SearchProvider"
-import BlackList from "./BlackList/BlackList"
+import { SearchContext } from "../context/SearchProvider";
+import BlackList from "./BlackList/BlackList";
 
 const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -55,16 +55,16 @@ const Header = () => {
     const debounce = (func, delay) => {
         let debounceTimer;
         return function () {
-            const context = this
-            const args = arguments
-            clearTimeout(debounceTimer)
-            debounceTimer = setTimeout(() => func.apply(context, args), delay)
+            const context = this;
+            const args = arguments;
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => func.apply(context, args), delay);
         };
     };
 
     const update = debounce(function (e) {
         // console.log(e.target.value)
-        setSearch(e.target.value)
+        setSearch(e.target.value);
     }, 500);
 
     return (
@@ -96,7 +96,7 @@ const Header = () => {
                                 // value={search}
                             />
                         </Search>
-                        <BlackList/>
+                        <BlackList />
                     </Toolbar>
                 </AppBar>
             </Box>

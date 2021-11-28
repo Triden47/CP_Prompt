@@ -1,22 +1,23 @@
-import { useState, useEffect, createContext } from 'react'
+import { useState, useEffect, createContext } from "react";
 
-export const SearchContext = createContext(null)
-
+export const SearchContext = createContext(null);
 
 const SearchProvider = ({ children }) => {
-    const [ search, setSearch ] = useState('')
+    const [search, setSearch] = useState("");
 
     // useEffect(() => {
     //     console.log(search)
     // }, [search])
     return (
-        <SearchContext.Provider value={{
-            search,
-            setSearch
-        }}>
+        <SearchContext.Provider
+            value={{
+                search,
+                setSearch,
+            }}
+        >
             {children}
         </SearchContext.Provider>
-    )
-}
+    );
+};
 
-export default SearchProvider
+export default SearchProvider;

@@ -14,7 +14,7 @@ const CollapsableList = ((props) => {
                     <IconButton
                     aria-label="expand row"
                     size="small"
-                    style={{ position: "relative", top: "3px" }}
+                    style={{ position: "relative", top: "3px", color: "rgba(255, 255, 255, 0.7)" }}
                     onClick={() => props.handleClick()}
                     >
                         <Badge badgeContent={props.children.length} color="primary"><KeyboardArrowDownIcon style={{ color: "white" }}/></Badge>
@@ -24,6 +24,7 @@ const CollapsableList = ((props) => {
                     aria-label="collapse row"
                     size="small"
                     onClick={() => props.handleClick()}
+                    style={{ color: "rgba(255, 255, 255, 0.7)" }}
                     >
                         <KeyboardArrowUpIcon style={{ color: "white" }}/>
                 </IconButton>

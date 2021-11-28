@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import { Box, Drawer, Divider } from '@mui/material'
-import { styled, useTheme } from '@mui/material/styles'
-import IconButton from '@mui/material/IconButton'
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
-import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import FilterListIcon from '@mui/icons-material/FilterList'
+import { useState } from "react";
+import { Box, Drawer, Divider } from "@mui/material";
+import { styled, useTheme } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import FilterListIcon from "@mui/icons-material/FilterList";
 
 //components
-import ListedWebsites from './ListedWebsites'
+import ListedWebsites from "./ListedWebsites";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
@@ -20,7 +20,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function TemporaryDrawer() {
     const theme = useTheme();
-    const [ state, setState ] = useState(false)
+    const [state, setState] = useState(false);
 
     const toggleDrawer = (open) => (event) => {
         if (
@@ -33,10 +33,7 @@ export default function TemporaryDrawer() {
     };
 
     const list = () => (
-        <Box
-            sx={{ width: "80vw" }}
-            role="presentation"
-        >
+        <Box sx={{ width: "80vw" }} role="presentation">
             <DrawerHeader>
                 <div style={{ position: "relative", top: "5px" }}>
                     <IconButton onClick={toggleDrawer(false)}>
@@ -59,7 +56,7 @@ export default function TemporaryDrawer() {
                 </div>
             </DrawerHeader>
             <Divider />
-            <ListedWebsites/>
+            <ListedWebsites />
         </Box>
     );
 

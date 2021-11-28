@@ -1,18 +1,22 @@
-import { useState, useContext } from 'react'
-import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Checkbox } from '@mui/material'
+import { useState, useContext } from "react";
+import {
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+    Checkbox,
+} from "@mui/material";
 
 //components
-import { BwContext } from '../../context/BwProvider'
-
+import { BwContext } from "../../context/BwProvider";
 
 const CheckboxList = () => {
     const [checked, setChecked] = useState([0]);
-    const { bw, setBw } = useContext(BwContext)
-
+    const { bw, setBw } = useContext(BwContext);
 
     const handleToggle = (value) => () => {
-
-        setBw(bw.filter(element => element !== value))
+        setBw(bw.filter((element) => element !== value));
 
         const currentIndex = checked.indexOf(value);
         const newChecked = [...checked];
@@ -34,7 +38,10 @@ const CheckboxList = () => {
                 const labelId = `checkbox-list-label-${value}`;
 
                 return (
-                    <ListItem key={`${value.start}${value.event}`} disablePadding>
+                    <ListItem
+                        key={`${value.start}${value.event}`}
+                        disablePadding
+                    >
                         <ListItemButton
                             role={undefined}
                             onClick={handleToggle(value)}
@@ -49,10 +56,7 @@ const CheckboxList = () => {
                                     inputProps={{ "aria-labelledby": labelId }}
                                 />
                             </ListItemIcon>
-                            <ListItemText
-                                id={labelId}
-                                primary={value}
-                            />
+                            <ListItemText id={labelId} primary={value} />
                         </ListItemButton>
                     </ListItem>
                 );

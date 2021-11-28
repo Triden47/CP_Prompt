@@ -6,7 +6,6 @@ import Card from './Upcoming_OngoingCard/Card.jsx'
 import SavedCard from './SavedCard/SavedCard.jsx'
 
 const Cards = (props) => {
-
     return (
         <div className="Cards">
             {
