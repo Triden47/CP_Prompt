@@ -16,7 +16,7 @@ const contestData = async(TIME) => {
 
 const requestLoop = setInterval(() => {
     contestData(new Date(new Date().getTime()).toISOString())
-}, 20000)
+}, 10000)
 
 
 const dataRearrange = ((contest) => {

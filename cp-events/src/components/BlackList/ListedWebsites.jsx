@@ -30,11 +30,11 @@ const CheckboxList = () => {
         <List
             sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
         >
-            {bw.map((value, key) => {
+            {bw.map((value) => {
                 const labelId = `checkbox-list-label-${value}`;
 
                 return (
-                    <ListItem key={value} disablePadding>
+                    <ListItem key={`${value.start}${value.event}`} disablePadding>
                         <ListItemButton
                             role={undefined}
                             onClick={handleToggle(value)}

@@ -10,18 +10,18 @@ const Cards = (props) => {
     return (
         <div className="Cards">
             {
-                props.type === "ongoing" && props.contests.map((contest, index) => {
-                    return (<Card details={contest} key={index} started={true}/>)
+                props.type === "ongoing" && props.contests.map((contest) => {
+                    return (<Card details={contest} key={`${contest.start}${contest.event}`} started={true}/>)
                 })
             }
             {
-                props.type === "upcoming" && props.contests.map((contest, index) => {
-                    return (<Card details={contest} key={index} started={false}/>)
+                props.type === "upcoming" && props.contests.map((contest) => {
+                    return (<Card details={contest} key={`${contest.start}${contest.event}`} started={false}/>)
                 })
             }
             {
-                props.type === "saved" && props.contests.map((contest, index) => {
-                    return (<SavedCard details={contest} key={index}/>)
+                props.type === "saved" && props.contests.map((contest) => {
+                    return (<SavedCard details={contest} key={`${contest.start}${contest.event}`}/>)
                 })
             }
         </div>

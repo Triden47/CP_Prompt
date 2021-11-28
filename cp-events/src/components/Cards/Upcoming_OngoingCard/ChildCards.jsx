@@ -18,8 +18,8 @@ const ChildCards = (props) => {
         <div>
             <Collapse in={props.open} timeout="auto">
                 {
-                    (props.children).map((child, index) => (
-                        <div key={index}>
+                    (props.children).map((child) => (
+                        <div key={`${child.start}${child.event}`}>
                             <Divider style={{ border: "0.1px solid", margin: "10px", color: 'rgba(255, 255, 255, 0.6)' }}/>
                             <div className="primaryCard">
                                 <div className="item1">

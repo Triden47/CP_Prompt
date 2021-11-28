@@ -8,10 +8,6 @@ const SaveProvider = ({ children }) => {
     const [ savedEvent, setSavedEvent ] = useState([])
 
     useEffect(() => {
-        console.log(savedEvent)
-    }, [savedEvent])
-
-    useEffect(() => {
         const savedList = (() => {
             chrome.storage.sync.get('savedEvents', function (result) {
                 var arr = result.savedEvents;
