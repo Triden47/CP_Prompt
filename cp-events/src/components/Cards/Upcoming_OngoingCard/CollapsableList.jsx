@@ -17,7 +17,7 @@ const CollapsableList = ((props) => {
                     style={{ position: "relative", top: "3px" }}
                     onClick={() => props.handleClick()}
                     >
-                        <Badge badgeContent={props.children.length} color="secondary"><KeyboardArrowDownIcon style={{ color: "white" }}/></Badge>
+                        <Badge badgeContent={props.children.length} color="primary"><KeyboardArrowDownIcon style={{ color: "white" }}/></Badge>
                     </IconButton>
                 </Zoom> : 
                 <IconButton

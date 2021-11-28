@@ -7,9 +7,9 @@ const SaveProvider = ({ children }) => {
     // const [ savedHost, setSavedHost ] = useState([])
     const [ savedEvent, setSavedEvent ] = useState([])
 
-    // useEffect(() => {
-    //     console.log(savedEvent)
-    // }, [savedEvent])
+    useEffect(() => {
+        console.log(savedEvent)
+    }, [savedEvent])
 
     useEffect(() => {
         const savedList = (() => {

@@ -79,7 +79,7 @@ const Header = () => {
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar
                     position="static"
-                    style={{ backgroundColor: "#3F0071" }}
+                    style={{ backgroundColor: "#0e2e78" }}
                 >
                     <Toolbar>
                         <Search>

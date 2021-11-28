@@ -1,13 +1,14 @@
 import express from 'express'
 
 //components
-import contest from '../api/api.js'
+import contestJSON from '../api/api.js'
 
 const route = express.Router()
 
 route.get('/contest', async(req, res) => {
     try {
-        res.status(200).json(contest.info.data)
+        // console.log(contestJSON.info)
+        res.status(200).json(contestJSON.info)
     } catch(error) {
         res.status(500).json(error)
     }
