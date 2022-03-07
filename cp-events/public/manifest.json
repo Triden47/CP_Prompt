@@ -1,18 +1,19 @@
 {
-  "name": "CP Event Tracker",
-  "description": "Tracks ongoing/upcoming programming events",
-  "version": "1.1",
+  "name": "CE SPY",
+  "description": "Tracks ongoing & upcoming programming events",
+  "version": "1.2",
   "manifest_version": 2,
   "browser_action": {
     "default_popup": "index.html",
-    "default_title": "CP Event Tracker"
+    "default_title": "CE SPY"
   },
   "icons": {
-    "16": "CP Logo_.png",
-    "48": "CP Logo_.png",
-    "128": "CP Logo_.png"
+    "16": "CE Logo.png",
+    "48": "CE Logo.png",
+    "128": "CE Logo.png"
   },
   "permissions": [
-    "storage"
+    "storage",
+    "https://pure-oasis-32759.herokuapp.com/"
   ]
 }

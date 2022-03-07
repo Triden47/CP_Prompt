@@ -9,7 +9,6 @@ const contestData = async(TIME) => {
         let contest = await axios.get(`${URL}/?username=${process.env.API_USER}&limit=1000&api_key=${process.env.API_KEY}&total_count=true&with_problems=false&end__gte=${TIME}`)
         dataRearrange(contest)
     } catch(error) {
-        // console.log(1)
         console.log(error)
     }
 }

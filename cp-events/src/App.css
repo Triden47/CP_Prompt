@@ -1,63 +1,92 @@
 .App {
-    /* padding: 0 5px; */
-    padding-top: 105px;
+  padding-top: 105px;
+}
+
+h2 {
+  font-weight: 100;
+  letter-spacing: 2px;
+}
+
+.error {
+  text-align: center;
+}
+
+.error img {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+}
+
+.error h2 {
+  font-weight: 100;
+  letter-spacing: 2px;
+  padding-bottom: 5px;
 }
 
 .Cards {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    gap: 5px;
-    padding: 5px;
+  gap: 5px;
+  padding: 5px;
 }
 
-.item1 { grid-area: header; }
-.item2 { grid-area: image; }
-.item3 { grid-area: startEndTime; }
-.item4 { grid-area: duration; }
-.item5 { grid-area: timeLeft; }
-.item6 { grid-area: options; }
-.item7 { grid-area: save; }
-.item8 { grid-area: more; }
+.item1 {
+  grid-area: header;
+}
+.item2 {
+  grid-area: image;
+}
+.item3 {
+  grid-area: startEndTime;
+}
+.item4 {
+  grid-area: duration;
+}
+.item5 {
+  grid-area: timeLeft;
+}
+.item6 {
+  grid-area: options;
+}
+.item7 {
+  grid-area: save;
+}
+.item8 {
+  grid-area: more;
+}
 
 .card {
-    background-color: #0e2a6ab6;
-    border-radius: 10px/10px;
-    padding: 5px 5px 5px 0;
-    /* padding-left: 0px; */
+  background-color: rgb(55, 92, 156);
+  padding: 5px 5px 5px 0;
 }
 
 .primaryCard {
   display: grid;
   grid-template-areas:
-    'image image header header header header header header header'
-    'image image startEndTime startEndTime startEndTime startEndTime options save more'
-    'image image duration duration timeLeft timeLeft options save more';
-    grid-template-columns: repeat(9, minmax(auto, 1fr));
-    grid-gap: 5px;
-    /* column-gap: 5px; */
-    position: relative;
+    "image image header header header header header header header"
+    "image image startEndTime startEndTime startEndTime startEndTime options save more"
+    "image image duration duration timeLeft timeLeft options save more";
+  grid-template-columns: repeat(9, minmax(auto, 1fr));
+  grid-gap: 5px;
+  position: relative;
 }
 
 .primaryCard p {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
 }
 
-
 .primaryCard > .item1 {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .primaryCard > .item2 {
-    text-align: center;
-}
-.primaryCard img {
-    width: 65px;
-    height: 65px;
-    border-radius: 100%;
+  text-align: center;
 }
 
-/* .primaryCard > .item7 {
-    margin-top: 5px;
-} */
+.primaryCard img {
+  width: 65px;
+  height: 65px;
+  border-radius: 100%;
+}
