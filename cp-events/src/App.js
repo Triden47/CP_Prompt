@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useEffect } from "react";
 //components
 import "./App.css";
 import Header from "./components/Header.jsx";
@@ -16,7 +16,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getContestData();
-      console.log(data);
+      // console.log(data);
       setContestData(data.data);
       if (!data.error) {
         setError(0);
